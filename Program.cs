@@ -1,7 +1,9 @@
-﻿internal class Program
+﻿using NotasMatematicas.Entities;
+
+internal class Program
 {
 
-/**
+    /**
 el profesor del area de matematicas necesita un programa que le permita registrar los estudiantes que se encuentran matriculados, la informacion que el docente posee de cada estaudiante es la siguiente:
 -codigo del estudiante: con una logitud maxina de 15 caracteres
 -nombre del estudiante: con una logitud macima de 40 caracteres
@@ -25,6 +27,46 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
 */
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Console.Clear();
+        bool run = true;
+        List<Estudiantes> ListEst = new List<Estudiantes>();
+        while (run)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            try
+            {
+                Console.Clear();
+                Estudiantes estudiante = new Estudiantes();
+                string n = Guid.NewGuid().ToString();
+                string guid = n.Substring(n.Count() - 15);
+                estudiante.Id = guid.Length <= 15 ? guid : throw new ArgumentException("El Codigo que Ingreso debe ser menor a 15 caracteres");
+                Console.WriteLine("Ingrese Nombre: ");
+                estudiante.Nombre = Console.ReadLine().Length <= 40 ? Console.ReadLine() : throw new ArgumentException("El Nombre que Ingreso debe ser menor a 40 caracteres");
+                Console.WriteLine("Ingrese Email: ");
+                estudiante.Email = Console.ReadLine().Length <= 40 ? Console.ReadLine() : throw new ArgumentException("El correo electronico del estudiante que Ingreso debe ser menor a 40 caracteres");
+                Console.WriteLine("Ingrese Edad: ");
+                estudiante.Edad = int.Parse(Console.ReadLine()) >= 0 ? int.Parse(Console.ReadLine()) : throw new ArgumentException("La Edad que Ingreso debe ser positiva");
+                Console.WriteLine("Ingrese Direccion: ");
+                estudiante.Direccion = Console.ReadLine().Length <= 35 ? Console.ReadLine() : throw new ArgumentException("La Direccion que Ingreso debe ser menor a 35 caracteres");
+                ListEst.Add(estudiante);
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("+{0}+", new string('-', e.Message.Count() + 10));
+                Console.WriteLine($"| error | {e.Message} |");
+                Console.WriteLine("+{0}+", new string('-', e.Message.Count() + 10));
+                Console.ReadKey();
+            }
+        }
+    }
+
+
+    public static string GenerarIdentificadorCorto()
+    {
+        int contador = 4;
+        contador++;
+        return contador.ToString("D4"); // "D4" asegura que la cadena tenga al menos 4 dígitos
     }
 }

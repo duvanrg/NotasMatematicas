@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj": {}
+    "C:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj": {}
   },
   "projects": {
-    "c:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj": {
+    "C:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj",
+        "projectUniqueName": "C:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj",
         "projectName": "NotasMatematicas",
-        "projectPath": "c:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj",
+        "projectPath": "C:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj",
         "packagesPath": "C:\\Users\\APM02-45\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\obj\\",
+        "outputPath": "C:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\APM02-45\\AppData\\Roaming\\NuGet\\NuGet.Config"
