@@ -20,10 +20,10 @@ namespace NotasMatematicas.Entities
 
         public Estudiantes(string id, string nombre, string email, int edad, string direccion)
         {
-            this.id = id;
-            this.nombre = nombre;
-            this.email = email;
-            this.edad = edad;
+            this.Id = id;
+            this.Nombre = nombre;
+            this.Email = email;
+            this.Edad = edad;
             this.Direccion = direccion;
         }
 
@@ -33,5 +33,14 @@ namespace NotasMatematicas.Entities
         public int Edad { get { return edad; } set { edad = value; } }
         public string Direccion { get { return direccion; } set { direccion = value; } }
 
+        public void ImprimirDatos()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(" {0,15}  {0,40}  {0,40}  {0,7}  {0,35}", "id", "nombre", "email", "edad", "direccion");
+            Console.WriteLine("{0, 40} {1, -20} {2, -30} {3, -4} {4, -35}", id, nombre, email, edad, direccion);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+        }
     }
 }
