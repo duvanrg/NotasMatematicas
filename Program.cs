@@ -35,20 +35,26 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             Console.ForegroundColor = ConsoleColor.White;
             try
             {
+                var read = "";
                 Console.Clear();
                 Estudiantes estudiante = new Estudiantes();
                 string n = Guid.NewGuid().ToString();
                 string guid = n.Substring(n.Count() - 15);
                 estudiante.Id = guid.Length <= 15 ? guid : throw new ArgumentException("El Codigo que Ingreso debe ser menor a 15 caracteres");
                 Console.WriteLine("Ingrese Nombre: ");
-                estudiante.Nombre = Console.ReadLine().Length <= 40 ? Console.ReadLine() : throw new ArgumentException("El Nombre que Ingreso debe ser menor a 40 caracteres");
+                read = Console.ReadLine();                
+                estudiante.Nombre = read.Length <= 40 ? read : throw new ArgumentException("El Nombre que Ingreso debe ser menor a 40 caracteres");
                 Console.WriteLine("Ingrese Email: ");
-                estudiante.Email = Console.ReadLine().Length <= 40 ? Console.ReadLine() : throw new ArgumentException("El correo electronico del estudiante que Ingreso debe ser menor a 40 caracteres");
+                read = Console.ReadLine();                
+                estudiante.Email = read.Length <= 40 ? read : throw new ArgumentException("El correo electronico del estudiante que Ingreso debe ser menor a 40 caracteres");
                 Console.WriteLine("Ingrese Edad: ");
-                estudiante.Edad = int.Parse(Console.ReadLine()) >= 0 ? int.Parse(Console.ReadLine()) : throw new ArgumentException("La Edad que Ingreso debe ser positiva");
+                read = Console.ReadLine();                
+                estudiante.Edad = int.Parse(read) >= 0 ? int.Parse(read) : throw new ArgumentException("La Edad que Ingreso debe ser positiva");
                 Console.WriteLine("Ingrese Direccion: ");
-                estudiante.Direccion = Console.ReadLine().Length <= 35 ? Console.ReadLine() : throw new ArgumentException("La Direccion que Ingreso debe ser menor a 35 caracteres");
+                read = Console.ReadLine();                
+                estudiante.Direccion = read.Length <= 35 ? read : throw new ArgumentException("La Direccion que Ingreso debe ser menor a 35 caracteres");
                 ListEst.Add(estudiante);
+                estudiante.ImprimirDatos();
             }
             catch (Exception e)
             {
