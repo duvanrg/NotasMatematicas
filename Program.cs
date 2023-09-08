@@ -35,26 +35,42 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             Console.ForegroundColor = ConsoleColor.White;
             try
             {
-                var read = "";
-                Console.Clear();
-                Estudiantes estudiante = new Estudiantes();
-                string n = Guid.NewGuid().ToString();
-                string guid = n.Substring(n.Count() - 15);
-                estudiante.Id = guid.Length <= 15 ? guid : throw new ArgumentException("El Codigo que Ingreso debe ser menor a 15 caracteres");
-                Console.WriteLine("Ingrese Nombre: ");
-                read = Console.ReadLine();                
-                estudiante.Nombre = read.Length <= 40 ? read : throw new ArgumentException("El Nombre que Ingreso debe ser menor a 40 caracteres");
-                Console.WriteLine("Ingrese Email: ");
-                read = Console.ReadLine();                
-                estudiante.Email = read.Length <= 40 ? read : throw new ArgumentException("El correo electronico del estudiante que Ingreso debe ser menor a 40 caracteres");
-                Console.WriteLine("Ingrese Edad: ");
-                read = Console.ReadLine();                
-                estudiante.Edad = int.Parse(read) >= 0 ? int.Parse(read) : throw new ArgumentException("La Edad que Ingreso debe ser positiva");
-                Console.WriteLine("Ingrese Direccion: ");
-                read = Console.ReadLine();                
-                estudiante.Direccion = read.Length <= 35 ? read : throw new ArgumentException("La Direccion que Ingreso debe ser menor a 35 caracteres");
-                ListEst.Add(estudiante);
-                estudiante.ImprimirDatos();
+                Console.WriteLine("+{0}+", new string('-', 30));
+                Console.WriteLine("|         Menú Principal       |");
+                Console.WriteLine("+{0}+", new string('-', 30));
+                Console.WriteLine("| 1. Agregar Estudiante        |");
+                Console.WriteLine("| 2. Agregar Notas             |");
+                Console.WriteLine("| 3. Ver Lista de Estudiantes  |");
+                Console.WriteLine("| 4. Ver Lista de Notas        |");
+                Console.WriteLine("| 5. Salir                     |");
+                Console.WriteLine("+{0}+", new string('-', 30));
+                Console.Write("Seleccione una opción: ");
+
+                string opc = Console.ReadLine();
+
+                switch (opc)
+                {
+                    case "1":
+                        AgregarEstudiante(ListEst);
+                        Console.WriteLine($"{ListEst[0].Nombre}");
+                        
+                        break;
+                    case "2":
+                        AgregarNotas();
+                        break;
+                    case "3":
+                        VerListaEstudiantes();
+                        break;
+                    case "4":
+                        VerListaNotas();
+                        break;
+                    case "5":
+                        run = false;
+                        break;
+                    default:
+                        Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
+                        break;
+                }
             }
             catch (Exception e)
             {
@@ -68,11 +84,42 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
         }
     }
 
-
-    public static string GenerarIdentificadorCorto()
+    private static void VerListaNotas()
     {
-        int contador = 4;
-        contador++;
-        return contador.ToString("D4"); // "D4" asegura que la cadena tenga al menos 4 dígitos
+        throw new NotImplementedException();
+    }
+
+    private static void VerListaEstudiantes()
+    {
+        throw new NotImplementedException();
+    }
+
+    private static void AgregarNotas()
+    {
+        throw new NotImplementedException();
+    }
+
+    public static void AgregarEstudiante(List<Estudiantes> ListEst)
+    {
+        var read = "";
+        Console.Clear();
+        Estudiantes estudiante = new Estudiantes();
+        string n = Guid.NewGuid().ToString();
+        string guid = n.Substring(n.Count() - 15);
+        estudiante.Id = guid.Length <= 15 ? guid : throw new ArgumentException("El Codigo que Ingreso debe ser menor a 15 caracteres");
+        Console.WriteLine("Ingrese Nombre: ");
+        read = Console.ReadLine();
+        estudiante.Nombre = read.Length <= 40 ? read : throw new ArgumentException("El Nombre que Ingreso debe ser menor a 40 caracteres");
+        Console.WriteLine("Ingrese Email: ");
+        read = Console.ReadLine();
+        estudiante.Email = read.Length <= 40 ? read : throw new ArgumentException("El correo electronico del estudiante que Ingreso debe ser menor a 40 caracteres");
+        Console.WriteLine("Ingrese Edad: ");
+        read = Console.ReadLine();
+        estudiante.Edad = int.Parse(read) >= 0 ? int.Parse(read) : throw new ArgumentException("La Edad que Ingreso debe ser positiva");
+        Console.WriteLine("Ingrese Direccion: ");
+        read = Console.ReadLine();
+        estudiante.Direccion = read.Length <= 35 ? read : throw new ArgumentException("La Direccion que Ingreso debe ser menor a 35 caracteres");
+        ListEst.Add(estudiante);
+        estudiante.ImprimirDatos();
     }
 }
