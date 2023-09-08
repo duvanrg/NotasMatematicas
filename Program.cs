@@ -62,6 +62,7 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                         VerListaNotas(ListEst);
                         break;
                     case "5":
+                        salir();
                         run = false;
                         break;
                     default:
@@ -76,10 +77,10 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                 Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
                 Console.WriteLine($"| error | {e.Message} |");
                 Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
-                Console.WriteLine($"| Tipo  | {e.GetType()} |");
-                Console.WriteLine("+{0}+", new string('-', Convert.ToString(e.GetType()).Length + 10));
-                Console.WriteLine($"| Linea | {lineaDeError} |");
-                Console.WriteLine("+{0}+", new string('-', Convert.ToString(lineaDeError).Length + 10));
+                // Console.WriteLine($"| Tipo  | {e.GetType()} |");
+                // Console.WriteLine("+{0}+", new string('-', Convert.ToString(e.GetType()).Length + 10));
+                // Console.WriteLine($"| Linea | {lineaDeError} |");
+                // Console.WriteLine("+{0}+", new string('-', Convert.ToString(lineaDeError).Length + 10));
                 Console.ReadKey();
             }
         }
@@ -125,10 +126,10 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
             Console.WriteLine($"| error | {e.Message} |");
             Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
-            Console.WriteLine($"| Tipo  | {e.GetType()} |");
-            Console.WriteLine("+{0}+", new string('-', Convert.ToString(e.GetType()).Length + 10));
-            Console.WriteLine($"| Linea | {lineaDeError} |");
-            Console.WriteLine("+{0}+", new string('-', Convert.ToString(lineaDeError).Length + 10));
+            // Console.WriteLine($"| Tipo  | {e.GetType()} |");
+            // Console.WriteLine("+{0}+", new string('-', Convert.ToString(e.GetType()).Length + 10));
+            // Console.WriteLine($"| Linea | {lineaDeError} |");
+            // Console.WriteLine("+{0}+", new string('-', Convert.ToString(lineaDeError).Length + 10));
             Console.ReadKey();
         }
     }
@@ -205,7 +206,8 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                                 Console.WriteLine("|        Nota Quices       |");
                                 Console.WriteLine("+{0}+", new string('-', 26));
                                 Console.WriteLine($"Quiz {estu.Notas.NotasQuices.Count() + 1}: ");
-                                estu.Notas.NotasQuices.Add(double.Parse(Console.ReadLine()));
+                                double nota = double.Parse(Console.ReadLine());
+                                estu.Notas.NotasQuices.Add(nota <= 5 || nota >= 0 ? nota : throw new ArgumentException("La Nota no puede ser mayor a 5 o negativa"));
                                 if (estu.Notas.NotasQuices.Count() < 4)
                                 {
                                     Console.WriteLine($"Desea agregar otra nota de quiz \n1. Si \n2. No");
@@ -230,7 +232,8 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                                 Console.WriteLine("|        Nota Trabajos       |");
                                 Console.WriteLine("+{0}+", new string('-', 28));
                                 Console.WriteLine($"Trabajo {estu.Notas.NotasTrabajos.Count() + 1}: ");
-                                estu.Notas.NotasTrabajos.Add(double.Parse(Console.ReadLine()));
+                                double nota = double.Parse(Console.ReadLine());
+                                estu.Notas.NotasTrabajos.Add(nota <= 5 || nota >= 0 ? nota : throw new ArgumentException("La Nota no puede ser mayor a 5 o negativa"));
                                 if (estu.Notas.NotasTrabajos.Count() < 2)
                                 {
                                     Console.WriteLine("Desea agregar otro trabajo \n1. Si \n2. No");
@@ -256,7 +259,8 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                                 Console.WriteLine("|     Nota Parciales     |");
                                 Console.WriteLine("+{0}+", new string('-', 24));
                                 Console.WriteLine($"Parcial {estu.Notas.NotasParciales.Count() + 1}: ");
-                                estu.Notas.NotasParciales.Add(double.Parse(Console.ReadLine()));
+                                double nota = double.Parse(Console.ReadLine());
+                                estu.Notas.NotasParciales.Add(nota <= 5 || nota >= 0 ? nota : throw new ArgumentException("La Nota no puede ser mayor a 5 o negativa"));
                                 if (estu.Notas.NotasParciales.Count() < 3)
                                 {
                                     Console.WriteLine("Desea agregar otro parcial \n1. Si \n2. No");
@@ -290,10 +294,10 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                 Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
                 Console.WriteLine($"| error | {e.Message} |");
                 Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
-                Console.WriteLine($"| Tipo  | {e.GetType()} |");
-                Console.WriteLine("+{0}+", new string('-', Convert.ToString(e.GetType()).Length + 10));
-                Console.WriteLine($"| Linea | {lineaDeError} |");
-                Console.WriteLine("+{0}+", new string('-', Convert.ToString(lineaDeError).Length + 10));
+                // Console.WriteLine($"| Tipo  | {e.GetType()} |");
+                // Console.WriteLine("+{0}+", new string('-', Convert.ToString(e.GetType()).Length + 10));
+                // Console.WriteLine($"| Linea | {lineaDeError} |");
+                // Console.WriteLine("+{0}+", new string('-', Convert.ToString(lineaDeError).Length + 10));
                 Console.ReadKey();
             }
         }
@@ -324,4 +328,54 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             Console.ReadKey();
         }
     }
+    private static void salir()
+    {
+        bool exitRequested = false;
+
+        while (!exitRequested)
+        {
+            // Cambia el color de la consola a uno aleatorio
+            Console.ForegroundColor = GetRandomConsoleColor();
+
+            // Limpia la pantalla y muestra el color actual
+            Console.Clear();
+            string patern = @"
+⠀╭ ◜◝ ͡ ◝ ͡ ◜◝╮
+(  Saliendo  )
+╰ ͜ ⠀ ͜   ͜   ͜  ╯
+        O
+        o
+        °
+〃∩ _∧＿∧_♡
+|('・ω・）♡
+¨ヽ_っ＿/￣￣￣/
+    ＼/＿＿＿/";
+            Console.WriteLine($"{patern}");
+            
+            Console.WriteLine("Presiona Enter para salir.");
+
+            // Espera un segundo antes de cambiar de nuevo
+            Thread.Sleep(1000);
+
+            // Verifica si se ha presionado Enter para salir
+            if (Console.KeyAvailable)
+            {
+                var key = Console.ReadKey(intercept: true);
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    exitRequested = true;
+                }
+            }
+        }
+    }
+
+    // Función para obtener un ConsoleColor aleatorio
+    static ConsoleColor GetRandomConsoleColor()
+    {
+        var consoleColors = Enum.GetValues(typeof(ConsoleColor));
+        var random = new Random();
+        return (ConsoleColor)consoleColors.GetValue(random.Next(consoleColors.Length));
+    }
+
 }
+
