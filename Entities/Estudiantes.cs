@@ -13,18 +13,20 @@ namespace NotasMatematicas.Entities
         private string email;
         private int edad;
         private string direccion;
+        private Notas notas = new Notas();
 
         public Estudiantes()
         {
         }
 
-        public Estudiantes(string id, string nombre, string email, int edad, string direccion)
+        public Estudiantes(string id, string nombre, string email, int edad, string direccion, Notas notas)
         {
-            this.Id = id;
-            this.Nombre = nombre;
-            this.Email = email;
-            this.Edad = edad;
-            this.Direccion = direccion;
+            this.id = id;
+            this.nombre = nombre;
+            this.email = email;
+            this.edad = edad;
+            this.direccion = direccion;
+            this.Notas = notas;
         }
 
         public string Id { get { return id; } set { id = value; } }
@@ -32,6 +34,8 @@ namespace NotasMatematicas.Entities
         public string Email { get { return email; } set { email = value; } }
         public int Edad { get { return edad; } set { edad = value; } }
         public string Direccion { get { return direccion; } set { direccion = value; } }
+
+        public Notas Notas { get { return notas; } set { notas = value; } }
 
         public void ImprimirDatos()
         {
@@ -46,8 +50,9 @@ namespace NotasMatematicas.Entities
             Console.ReadKey();
         }
 
-        public override string ToString(){
-            return $"| {id, -15} | {nombre, -40} | {email, -40} | {edad, -7} | {direccion, -35} |";
+        public override string ToString()
+        {
+            return $"| {id,-15} | {nombre,-40} | {email,-40} | {edad,-7} | {direccion,-35} |";
         }
     }
 }
