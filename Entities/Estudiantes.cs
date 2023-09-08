@@ -13,7 +13,7 @@ namespace NotasMatematicas.Entities
         private string email;
         private int edad;
         private string direccion;
-        private Notas notas = new Notas();
+        private Notas notas;
 
         public Estudiantes()
         {
@@ -26,7 +26,7 @@ namespace NotasMatematicas.Entities
             this.email = email;
             this.edad = edad;
             this.direccion = direccion;
-            this.Notas = notas;
+            this.Notas = new Notas();
         }
 
         public string Id { get { return id; } set { id = value; } }
