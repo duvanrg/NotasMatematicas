@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\APM02-45\\.nuget\\packages\\": {}
+    "C:\\Users\\duvan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj",
+      "projectUniqueName": "C:\\Users\\duvan\\Archivos\\CampusLand\\Programacion\\Skills\\JS\\c#\\NotasMatematicas\\NotasMatematicas.csproj",
       "projectName": "NotasMatematicas",
-      "projectPath": "C:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\NotasMatematicas.csproj",
-      "packagesPath": "C:\\Users\\APM02-45\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\APM02-45\\Documents\\Apolo-duban\\Jholver\\C-sharp\\NotasMatematicas\\obj\\",
+      "projectPath": "C:\\Users\\duvan\\Archivos\\CampusLand\\Programacion\\Skills\\JS\\c#\\NotasMatematicas\\NotasMatematicas.csproj",
+      "packagesPath": "C:\\Users\\duvan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\duvan\\Archivos\\CampusLand\\Programacion\\Skills\\JS\\c#\\NotasMatematicas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\APM02-45\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\duvan\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"

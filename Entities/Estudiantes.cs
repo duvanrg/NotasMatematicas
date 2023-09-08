@@ -37,8 +37,11 @@ namespace NotasMatematicas.Entities
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(" {0,15}  {0,40}  {0,40}  {0,7}  {0,35}", "id", "nombre", "email", "edad", "direccion");
-            Console.WriteLine("{0, 40} {1, -20} {2, -30} {3, -4} {4, -35}", id, nombre, email, edad, direccion);
+            Console.WriteLine("+{0}+", new string('-', 151));
+            Console.WriteLine("| {0, -15} | {1, -40} | {2, -40} | {3, -7} | {4, -35} |", "id", "nombre", "email", "edad", "direccion");
+            Console.WriteLine("+{0}+", new string('-', 151));
+            Console.WriteLine("| {0, -15} | {1, -40} | {2, -40} | {3, -7} | {4, -35} |", id, nombre, email, edad, direccion);
+            Console.WriteLine("+{0}+", new string('-', 151));
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
         }
