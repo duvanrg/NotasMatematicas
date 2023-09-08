@@ -91,8 +91,6 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
         {
             var read = "";
             Estudiantes estudiante = new Estudiantes();
-            // string n = Guid.NewGuid().ToString();
-            // string guid = n.Substring(n.Count() - 15);
             Console.WriteLine("Ingrese Codigo: ");
             read = Console.ReadLine();
             estudiante.Id = read.Length <= 15 ? read : throw new ArgumentException("El Codigo que Ingreso debe ser menor a 15 caracteres");
@@ -131,21 +129,34 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
     }
     private static void VerListaEstudiantes(List<Estudiantes> ListEst)
     {
-
-        string[] titulos = { "id", "nombre", "email", "Quices", "Trabajos", "Parciales", "edad", "direccion" };
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("+{0}+", new string('-', 114));
-        Console.WriteLine("| {0, -15} | {1, -40} | {2, -21} | {3, -9} | {4, -15} |", titulos[0], titulos[1], titulos[3], titulos[4], titulos[5]);
-        Console.WriteLine("+{0}+", new string('-', 114));
-        Console.WriteLine("| {0, -15} | {1, -40} | {2, -3} | {3, -3} | {4, -3} | {5, -3} | {6, -3} | {7, -3} | {8, -3} | {9, -3} | {10, -3} |", "", "", "Q1", "Q2", "Q3", "Q4", "T1", "T2", "P1", "P2", "P3");
-        Console.WriteLine("+{0}+", new string('-', 114));
-        foreach (Estudiantes list in ListEst)
+        if (ListEst.Count() != 0)
         {
-            // list.ImprimirDatos()
-            Console.WriteLine($"{list.ToString()}");
+
+            string[] titulos = { "id", "nombre", "email", "Quices", "Trabajos", "Parciales", "edad", "direccion" };
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("+{0}+", new string('-', 114));
+            Console.WriteLine("| {0, -15} | {1, -40} | {2, -21} | {3, -9} | {4, -15} |", titulos[0], titulos[1], titulos[3], titulos[4], titulos[5]);
+            Console.WriteLine("+{0}+", new string('-', 114));
+            Console.WriteLine("| {0, -15} | {1, -40} | {2, -3} | {3, -3} | {4, -3} | {5, -3} | {6, -3} | {7, -3} | {8, -3} | {9, -3} | {10, -3} |", "", "", "Q1", "Q2", "Q3", "Q4", "T1", "T2", "P1", "P2", "P3");
+            Console.WriteLine("+{0}+", new string('-', 114));
+            foreach (Estudiantes list in ListEst)
+            {
+                // list.ImprimirDatos()
+                Console.WriteLine($"{list.ToString()}");
+                Console.WriteLine("+{0}+", new string('-', 114));
+            }
+            Console.ReadKey();
         }
-        Console.ReadKey();
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("+{0}+", new string('-', 39));
+            Console.WriteLine("| No se ha registrado ningun estudiante |");
+            Console.WriteLine("+{0}+", new string('-', 39));
+            Console.ReadKey();
+
+        }
+
     }
     private static void AgregarNotas(List<Estudiantes> ListEst)
     {
@@ -153,7 +164,14 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
         Console.WriteLine("Ingrese el código del estudiante");
         string cod = Console.ReadLine();
         Estudiantes estu = ListEst.Find(estudiante => estudiante.Id == cod);
-
+        if (estu == null)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("+{0}+", new string('-', 35));
+            Console.WriteLine("| No se ha encontrado al estudiante |");
+            Console.WriteLine("+{0}+", new string('-', 35));
+            Console.ReadKey();
+        }
         while (estu != null)
         {
             Console.Clear();
@@ -239,6 +257,7 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                         }
                         break;
                     case "4":
+                        Console.WriteLine($"Enter para continuar");
                         estu = null;
                         break;
                     default:
@@ -265,16 +284,27 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
 
     private static void VerListaNotas(List<Estudiantes> ListEst)
     {
-        string[] titulos = { "id", "nombre", "def quices", "def Trabajos", "def parciales", "Nota Final" };
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("+{0}+", new string('-', 117));
-        Console.WriteLine("| {0, -15} | {1, -40} | {2, -7} | {3, -7} | {4, -7} | {5, -10} |", titulos[0], titulos[1], titulos[2], titulos[3], titulos[4], titulos[5]);
-        Console.WriteLine("+{0}+", new string('-', 117));
-        foreach (Estudiantes list in ListEst)
+        if (ListEst.Count() != 0)
         {
-            Console.WriteLine("| {0, -15} | {1, -40} {2, -7}", list.Id, list.Nombre, list.Notas.ToString());
+            string[] titulos = { "id", "nombre", "def quices", "def Trabajos", "def parciales", "Nota Final" };
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("+{0}+", new string('-', 117));
+            Console.WriteLine("| {0, -15} | {1, -40} | {2, -7} | {3, -7} | {4, -7} | {5, -10} |", titulos[0], titulos[1], titulos[2], titulos[3], titulos[4], titulos[5]);
+            Console.WriteLine("+{0}+", new string('-', 117));
+            foreach (Estudiantes list in ListEst)
+            {
+                Console.WriteLine("| {0, -15} | {1, -40} {2, -7}", list.Id, list.Nombre, list.Notas.ToString());
+                Console.WriteLine("+{0}+", new string('-', 117));
+            }
+            Console.ReadKey();
         }
-        Console.ReadKey();
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("+{0}+", new string('-', 39));
+            Console.WriteLine("| No se ha registrado ningun estudiante |");
+            Console.WriteLine("+{0}+", new string('-', 39));
+            Console.ReadKey();
+        }
     }
 }
