@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/VuwAmAAHy6IA34eWeW+rbhe/Ndpe1Vp9E+mSI9qxrdNEzJWPELXqg6Vfet5h1aCkNJAXaghDcx27XkOy4ewEw==",
+  "dgSpecHash": "3Arpwn8Y4DGFTJnpsuGKoUXuzKNxOU6d5vft9kE+i7PwY2w74F2C8sD7xQtsu0C1VbiWIkAQAqB5cPAj6QavFg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\duvan\\Archivos\\CampusLand\\Programacion\\Skills\\JS\\c#\\NotasMatematicas\\NotasMatematicas.csproj",
+  "projectFilePath": "/workspaces/NotasMatematicas/NotasMatematicas.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.Design;
+using System.Diagnostics;
 using NotasMatematicas.Entities;
 
 internal class Program
 {
 
-    /**
-el profesor del area de matematicas necesita un programa que le permita registrar los estudiantes que se encuentran matriculados, la informacion que el docente posee de cada estaudiante es la siguiente:
+    /**el profesor del area de matematicas necesita un programa que le permita registrar los estudiantes que se encuentran matriculados, la informacion que el docente posee de cada estaudiante es la siguiente:
 -codigo del estudiante: con una logitud maxina de 15 caracteres
 -nombre del estudiante: con una logitud macima de 40 caracteres
 -correo electronico del estudiante: con una cantidad maxima de 40 caracteres
@@ -24,8 +24,7 @@ parciales: 60%
 el programa debe permitirle al profesor generar los siguiente reportes:
 1. listado general de notas del grupo paginado por 10 estudiantes
 2. listado con las definitivas de cada nota y la nota final
-el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Parciales
-*/
+el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Parciales*/
     private static void Main(string[] args)
     {
         bool run = true;
@@ -73,11 +72,15 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             }
             catch (Exception e)
             {
+                int lineaDeError = (new System.Diagnostics.StackTrace(true)).GetFrame(0).GetFileLineNumber();
                 Console.ForegroundColor = ConsoleColor.Red;
-
-                Console.WriteLine("+{0}+", new string('-', e.Message.Count() + 10));
+                Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
                 Console.WriteLine($"| error | {e.Message} |");
-                Console.WriteLine("+{0}+", new string('-', e.Message.Count() + 10));
+                Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
+                Console.WriteLine($"| Tipo  | {e.GetType()} |");
+                Console.WriteLine("+{0}+", new string('-', Convert.ToString(e.GetType()).Length + 10));
+                Console.WriteLine($"| Linea | {lineaDeError} |");
+                Console.WriteLine("+{0}+", new string('-', Convert.ToString(lineaDeError).Length + 10));
                 Console.ReadKey();
             }
         }
@@ -106,16 +109,24 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             Console.WriteLine("Ingrese Direccion: ");
             read = Console.ReadLine();
             estudiante.Direccion = read.Length <= 35 ? read : throw new ArgumentException("La Direccion que Ingreso debe ser menor a 35 caracteres");
+            estudiante.Notas = new Notas();
+            estudiante.Notas.NotasQuices = new List<double>();
+            estudiante.Notas.NotasTrabajos = new List<double>();
+            estudiante.Notas.NotasParciales = new List<double>();
             ListEst.Add(estudiante);
             estudiante.ImprimirDatos();
         }
         catch (Exception e)
         {
+            int lineaDeError = (new System.Diagnostics.StackTrace(true)).GetFrame(0).GetFileLineNumber();
             Console.ForegroundColor = ConsoleColor.Red;
-
-            Console.WriteLine("+{0}+", new string('-', e.Message.Count() + 10));
+            Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
             Console.WriteLine($"| error | {e.Message} |");
-            Console.WriteLine("+{0}+", new string('-', e.Message.Count() + 10));
+            Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
+            Console.WriteLine($"| Tipo  | {e.GetType()} |");
+            Console.WriteLine("+{0}+", new string('-', Convert.ToString(e.GetType()).Length + 10));
+            Console.WriteLine($"| Linea | {lineaDeError} |");
+            Console.WriteLine("+{0}+", new string('-', Convert.ToString(lineaDeError).Length + 10));
             Console.ReadKey();
         }
     }
@@ -152,63 +163,72 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             Console.WriteLine("| 3. Agregar Parciales     |");
             Console.WriteLine("| 4. Salir                 |");
             Console.WriteLine("+{0}+", new string('-', 26));
-            Console.Write("Seleccione una opción: ");
+            Console.WriteLine("Seleccione una opción: ");
             try
             {
-                Console.Clear();
                 string opc = Console.ReadLine();
+                Console.Clear();
                 switch (opc)
                 {
                     case "1":
-                        if (estu.Notas.NotasQuices.Count < 4)
-                        {
-                            Console.WriteLine("+{0}+", new string('-', 26));
-                            Console.WriteLine("|         Nota Quizes       |");
-                            Console.WriteLine("+{0}+", new string('-', 26));
-                            while (continuar || estu.Notas.NotasQuices.Count >= 4)
+                        if (estu.Notas.NotasQuices.Count() < 4)
+                            while (continuar && estu.Notas.NotasQuices.Count() < 4)
                             {
-                                Console.WriteLine($"Quiz {estu.Notas.NotasQuices.Count + 1}: ");
-                                estu.Notas.NotasQuices.Add(int.Parse(Console.ReadLine()));
-                                Console.WriteLine($"Desea agregar otra nota de quiz \n1. Si \n2. No");
-                                continuar = int.Parse(Console.ReadLine()) == 1 ? true : false;
+                                Console.Clear();
+                                Console.WriteLine("+{0}+", new string('-', 26));
+                                Console.WriteLine("|        Nota Quices       |");
+                                Console.WriteLine("+{0}+", new string('-', 26));
+                                Console.WriteLine($"Quiz {estu.Notas.NotasQuices.Count() + 1}: ");
+                                estu.Notas.NotasQuices.Add(double.Parse(Console.ReadLine()));
+                                if (estu.Notas.NotasQuices.Count() < 4)
+                                {
+                                    Console.WriteLine($"Desea agregar otra nota de quiz \n1. Si \n2. No");
+                                    continuar = int.Parse(Console.ReadLine()) == 1 ? true : false;
+                                }
                             }
-                        }
                         else
                         {
                             Console.WriteLine("solo se pueden agregar 4 notas de quices");
                         }
                         break;
                     case "2":
-                        if (estu.Notas.NotasTrabajos.Count < 2)
-                        {
-                            Console.WriteLine("+{0}+", new string('-', 28));
-                            Console.WriteLine("|       Nota Trabajos      |");
-                            Console.WriteLine("+{0}+", new string('-', 28));
-                            while (continuar || estu.Notas.NotasTrabajos.Count < 2)
+                        if (estu.Notas.NotasTrabajos.Count() < 2)
+                            while (continuar && estu.Notas.NotasTrabajos.Count() < 2)
                             {
-                                Console.WriteLine($"Trabajo {estu.Notas.NotasTrabajos.Count + 1}: ");
-                                estu.Notas.NotasTrabajos.Add(int.Parse(Console.ReadLine()));
-                                Console.WriteLine("Desea agregar otro trabajo \n1. Si \n2. No");
-                                continuar = int.Parse(Console.ReadLine()) == 1;
+                                Console.Clear();
+                                Console.WriteLine(estu.Notas.NotasTrabajos.Count());
+                                Console.WriteLine("+{0}+", new string('-', 28));
+                                Console.WriteLine("|        Nota Trabajos       |");
+                                Console.WriteLine("+{0}+", new string('-', 28));
+                                Console.WriteLine($"Trabajo {estu.Notas.NotasTrabajos.Count() + 1}: ");
+                                estu.Notas.NotasTrabajos.Add(double.Parse(Console.ReadLine()));
+                                if (estu.Notas.NotasTrabajos.Count() < 2)
+                                {
+                                    Console.WriteLine("Desea agregar otro trabajo \n1. Si \n2. No");
+                                    continuar = int.Parse(Console.ReadLine()) == 1 ? true : false;
+                                }
                             }
-                        }
                         else
                         {
                             Console.WriteLine("Solo se pueden agregar 2 notas de trabajos.");
                         }
                         break;
                     case "3":
-                        if (estu.Notas.NotasParciales.Count < 3)
+                        if (estu.Notas.NotasParciales.Count() < 3)
                         {
-                            Console.WriteLine("+{0}+", new string('-', 29));
-                            Console.WriteLine("|     Nota Parciales     |");
-                            Console.WriteLine("+{0}+", new string('-', 29));
-                            while (continuar && estu.Notas.NotasParciales.Count < 3)
+                            while (continuar && estu.Notas.NotasParciales.Count() < 3)
                             {
-                                Console.WriteLine($"Parcial {estu.Notas.NotasParciales.Count + 1}: ");
-                                estu.Notas.NotasParciales.Add(int.Parse(Console.ReadLine()));
-                                Console.WriteLine("Desea agregar otro parcial \n1. Si \n2. No");
-                                continuar = int.Parse(Console.ReadLine()) == 1;
+                                Console.Clear();
+                                Console.WriteLine("+{0}+", new string('-', 29));
+                                Console.WriteLine("|     Nota Parciales     |");
+                                Console.WriteLine("+{0}+", new string('-', 29));
+                                Console.WriteLine($"Parcial {estu.Notas.NotasParciales.Count() + 1}: ");
+                                estu.Notas.NotasParciales.Add(double.Parse(Console.ReadLine()));
+                                if (estu.Notas.NotasParciales.Count() < 3)
+                                {
+                                    Console.WriteLine("Desea agregar otro parcial \n1. Si \n2. No");
+                                    continuar = int.Parse(Console.ReadLine()) == 1 ? true : false;
+                                }
                             }
                         }
                         else
@@ -227,11 +247,15 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             }
             catch (Exception e)
             {
+                int lineaDeError = (new System.Diagnostics.StackTrace(true)).GetFrame(0).GetFileLineNumber();
                 Console.ForegroundColor = ConsoleColor.Red;
-
                 Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
                 Console.WriteLine($"| error | {e.Message} |");
                 Console.WriteLine("+{0}+", new string('-', e.Message.Length + 10));
+                Console.WriteLine($"| Tipo  | {e.GetType()} |");
+                Console.WriteLine("+{0}+", new string('-', Convert.ToString(e.GetType()).Length + 10));
+                Console.WriteLine($"| Linea | {lineaDeError} |");
+                Console.WriteLine("+{0}+", new string('-', Convert.ToString(lineaDeError).Length + 10));
                 Console.ReadKey();
             }
         }
@@ -239,14 +263,14 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
 
     private static void VerListaNotas(List<Estudiantes> ListEst)
     {
-        string[] titulos = { "id", "nombre", "def quices", "def Trabajos", "def parciales", "Nota Final"};
+        string[] titulos = { "id", "nombre", "def quices", "def Trabajos", "def parciales", "Nota Final" };
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine("+{0}+", new string('-', 151));
-        Console.WriteLine("| {0, -15} | {1, -40} | {2, -7} | {3, -7} | {4, -7} | {5, -10} |", titulos[0], titulos[1], titulos[3], titulos[4], titulos[5], titulos[6]);
+        Console.WriteLine("| {0, -15} | {1, -40} | {2, -7} | {3, -7} | {4, -7} | {5, -10} |", titulos[0], titulos[1], titulos[2], titulos[3], titulos[4], titulos[5]);
         Console.WriteLine("+{0}+", new string('-', 151));
         foreach (Estudiantes list in ListEst)
         {
-            Console.WriteLine("| {0, -15} | {1, -40} {2, -7}",list.Id, list.Nombre, list.Notas.ToString());
+            Console.WriteLine("| {0, -15} | {1, -40} {2, -7}", list.Id, list.Nombre, list.Notas.ToString());
             Console.WriteLine("+{0}+", new string('-', 100));
         }
         Console.ReadKey();
