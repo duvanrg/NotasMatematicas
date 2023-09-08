@@ -93,6 +93,11 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             Estudiantes estudiante = new Estudiantes();
             Console.WriteLine("Ingrese Codigo: ");
             read = Console.ReadLine();
+            Estudiantes dupli = ListEst.Find(estudiante => estudiante.Id == read);
+            if (dupli != null)
+            {
+                throw new ArgumentException("El Codigo ya existe");
+            }
             estudiante.Id = read.Length <= 15 ? read : throw new ArgumentException("El Codigo que Ingreso debe ser menor a 15 caracteres");
             Console.WriteLine("Ingrese Nombre: ");
             read = Console.ReadLine();
@@ -137,7 +142,7 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
             Console.WriteLine("+{0}+", new string('-', 114));
             Console.WriteLine("| {0, -15} | {1, -40} | {2, -21} | {3, -9} | {4, -15} |", titulos[0], titulos[1], titulos[3], titulos[4], titulos[5]);
             Console.WriteLine("+{0}+", new string('-', 114));
-            Console.WriteLine("| {0, -15} | {1, -40} | {2, -3} | {3, -3} | {4, -3} | {5, -3} | {6, -3} | {7, -3} | {8, -3} | {9, -3} | {10, -3} |", "", "", "Q1", "Q2", "Q3", "Q4", "T1", "T2", "P1", "P2", "P3");
+            Console.WriteLine("| {0, -15} | {0, -40} | {1, -3} | {2, -3} | {3, -3} | {4, -3} | {5, -3} | {6, -3} | {7, -3} | {8, -3} | {9, -3} |", "", "Q1", "Q2", "Q3", "Q4", "T1", "T2", "P1", "P2", "P3");
             Console.WriteLine("+{0}+", new string('-', 114));
             foreach (Estudiantes list in ListEst)
             {
