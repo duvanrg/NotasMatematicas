@@ -27,3 +27,17 @@ C:/Users/duvan/Archivos/CampusLand/Programacion/Skills/JS/c#/NotasMatematicas/ob
 /workspaces/NotasMatematicas/obj/Debug/net7.0/NotasMatematicas.pdb
 /workspaces/NotasMatematicas/obj/Debug/net7.0/NotasMatematicas.genruntimeconfig.cache
 /workspaces/NotasMatematicas/obj/Debug/net7.0/ref/NotasMatematicas.dll
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\bin\Debug\net7.0\NotasMatematicas.exe
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\bin\Debug\net7.0\NotasMatematicas.deps.json
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\bin\Debug\net7.0\NotasMatematicas.runtimeconfig.json
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\bin\Debug\net7.0\NotasMatematicas.dll
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\bin\Debug\net7.0\NotasMatematicas.pdb
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\obj\Debug\net7.0\NotasMatematicas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\obj\Debug\net7.0\NotasMatematicas.AssemblyInfoInputs.cache
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\obj\Debug\net7.0\NotasMatematicas.AssemblyInfo.cs
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\obj\Debug\net7.0\NotasMatematicas.csproj.CoreCompileInputs.cache
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\obj\Debug\net7.0\NotasMatematicas.dll
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\obj\Debug\net7.0\refint\NotasMatematicas.dll
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\obj\Debug\net7.0\NotasMatematicas.pdb
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\obj\Debug\net7.0\NotasMatematicas.genruntimeconfig.cache
+C:\Users\APM02-45\Documents\Apolo-duban\Jholver\C-sharp\NotasMatematicas\obj\Debug\net7.0\ref\NotasMatematicas.dll

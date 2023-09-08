@@ -34,8 +34,9 @@ namespace NotasMatematicas.Entities
                 double defTrabajos = notasTrabajos.Sum() / notasTrabajos.Count;
                 double defParciales = notasParciales.Sum() / notasParciales.Count;
                 double definitiva = (defQuices*0.25)+(defTrabajos*0.15)+(defParciales*0.60);
-                return  $"| {defQuices,-15} | {defTrabajos,-40} | {defParciales,-40} | {definitiva,-7} |";
+                return $"| {defQuices,-10:F1} | {defTrabajos,-12:F1} | {defParciales,-13:F1} | {definitiva,-10:F1} |";
             }
+
             catch (Exception)
             {
                 throw;
