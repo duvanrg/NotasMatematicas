@@ -52,7 +52,7 @@ namespace NotasMatematicas.Entities
 
         public override string ToString()
         {
-            return $"| {id,-15} | {nombre,-40} | {email,-40} | {edad,-7} | {direccion,-35} |";
+            return $"| {id,-15} | {nombre,-40} | {Notas.NotasQuices[0], -3} | {Notas.NotasQuices[1], -3} | {Notas.NotasQuices[2], -3} | {Notas.NotasQuices[3], -3} | {Notas.NotasTrabajos[0], -3} | {Notas.NotasTrabajos[1], -3} | {Notas.NotasParciales[0], -3} | {Notas.NotasParciales[1], -3} | {Notas.NotasParciales[0], -3} |";
         }
     }
 }
