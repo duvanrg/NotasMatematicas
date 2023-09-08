@@ -27,24 +27,24 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
 */
     private static void Main(string[] args)
     {
-        Console.Clear();
         bool run = true;
         List<Estudiantes> ListEst = new List<Estudiantes>();
         while (run)
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("+{0}+", new string('-', 30));
+            Console.WriteLine("|         Menú Principal       |");
+            Console.WriteLine("+{0}+", new string('-', 30));
+            Console.WriteLine("| 1. Agregar Estudiante        |");
+            Console.WriteLine("| 2. Ver Lista de Estudiantes  |");
+            Console.WriteLine("| 3. Agregar Notas             |");
+            Console.WriteLine("| 4. Ver Lista de Notas        |");
+            Console.WriteLine("| 5. Salir                     |");
+            Console.WriteLine("+{0}+", new string('-', 30));
+            Console.Write("Seleccione una opción: ");
             try
             {
-                Console.WriteLine("+{0}+", new string('-', 30));
-                Console.WriteLine("|         Menú Principal       |");
-                Console.WriteLine("+{0}+", new string('-', 30));
-                Console.WriteLine("| 1. Agregar Estudiante        |");
-                Console.WriteLine("| 2. Agregar Notas             |");
-                Console.WriteLine("| 3. Ver Lista de Estudiantes  |");
-                Console.WriteLine("| 4. Ver Lista de Notas        |");
-                Console.WriteLine("| 5. Salir                     |");
-                Console.WriteLine("+{0}+", new string('-', 30));
-                Console.Write("Seleccione una opción: ");
 
                 string opc = Console.ReadLine();
 
@@ -53,16 +53,15 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                     case "1":
                         AgregarEstudiante(ListEst);
                         Console.WriteLine($"{ListEst[0].Nombre}");
-                        
                         break;
                     case "2":
-                        AgregarNotas();
+                        VerListaEstudiantes(ListEst);
                         break;
                     case "3":
-                        VerListaEstudiantes();
+                        AgregarNotas(ListEst);
                         break;
                     case "4":
-                        VerListaNotas();
+                        VerListaNotas(ListEst);
                         break;
                     case "5":
                         run = false;
@@ -84,20 +83,7 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
         }
     }
 
-    private static void VerListaNotas()
-    {
-        throw new NotImplementedException();
-    }
 
-    private static void VerListaEstudiantes()
-    {
-        throw new NotImplementedException();
-    }
-
-    private static void AgregarNotas()
-    {
-        throw new NotImplementedException();
-    }
 
     public static void AgregarEstudiante(List<Estudiantes> ListEst)
     {
@@ -121,5 +107,28 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
         estudiante.Direccion = read.Length <= 35 ? read : throw new ArgumentException("La Direccion que Ingreso debe ser menor a 35 caracteres");
         ListEst.Add(estudiante);
         estudiante.ImprimirDatos();
+    }
+    private static void VerListaEstudiantes(List<Estudiantes> ListEst)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("+{0}+", new string('-', 151));
+        Console.WriteLine("| {0, -15} | {1, -40} | {2, -40} | {3, -7} | {4, -35} |", "id", "nombre", "email", "edad", "direccion");
+        Console.WriteLine("+{0}+", new string('-', 151));
+        foreach (Estudiantes list in ListEst)
+        {
+            Console.WriteLine($"{list.ToString()}");
+            Console.WriteLine("+{0}+", new string('-', 151));
+        }
+        Console.ReadKey();
+    }
+    private static void AgregarNotas(List<Estudiantes> ListEst)
+
+    {
+        throw new NotImplementedException();
+    }
+    private static void VerListaNotas(List<Estudiantes> ListEst)
+    {
+        throw new NotImplementedException();
     }
 }

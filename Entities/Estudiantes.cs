@@ -45,5 +45,9 @@ namespace NotasMatematicas.Entities
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
         }
+
+        public override string ToString(){
+            return $"| {id, -15} | {nombre, -40} | {email, -40} | {edad, -7} | {direccion, -35} |";
+        }
     }
 }
