@@ -214,7 +214,11 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                             }
                         else
                         {
-                            Console.WriteLine("solo se pueden agregar 4 notas de quices");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("+{0}+", new string('-', 42));
+                            Console.WriteLine("| solo se pueden agregar 4 notas de quices |");
+                            Console.WriteLine("+{0}+", new string('-', 42));
+                            Console.ReadKey();
                         }
                         break;
                     case "2":
@@ -235,7 +239,11 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                             }
                         else
                         {
-                            Console.WriteLine("Solo se pueden agregar 2 notas de trabajos.");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("+{0}+", new string('-', 44));
+                            Console.WriteLine("| solo se pueden agregar 2 notas de trabajos |");
+                            Console.WriteLine("+{0}+", new string('-', 44));
+                            Console.ReadKey();
                         }
                         break;
                     case "3":
@@ -258,7 +266,11 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                         }
                         else
                         {
-                            Console.WriteLine("Solo se pueden agregar 3 notas de parciales.");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("+{0}+", new string('-', 45));
+                            Console.WriteLine("| solo se pueden agregar 3 notas de parciales |");
+                            Console.WriteLine("+{0}+", new string('-', 45));
+                            Console.ReadKey();
                         }
                         break;
                     case "4":
