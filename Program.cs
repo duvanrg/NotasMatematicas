@@ -51,7 +51,6 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                 {
                     case "1":
                         AgregarEstudiante(ListEst);
-                        Console.WriteLine($"{ListEst[0].Nombre}");
                         break;
                     case "2":
                         VerListaEstudiantes(ListEst);
@@ -132,15 +131,19 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
     }
     private static void VerListaEstudiantes(List<Estudiantes> ListEst)
     {
-        string[] titulos = { "id", "nombre", "email", "notas quices", "notas Trabajos", "notas parciales", "edad", "direccion" };
+
+        string[] titulos = { "id", "nombre", "email", "Quices", "Trabajos", "Parciales", "edad", "direccion" };
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("+{0}+", new string('-', 151));
-        Console.WriteLine("| {0, -15} | {1, -40} | {2, -40} | {3, -7} | {4, -35} |", titulos[0], titulos[1], titulos[2], titulos[6], titulos[7]);
-        Console.WriteLine("+{0}+", new string('-', 151));
+        Console.WriteLine("+{0}+", new string('-', 114));
+        Console.WriteLine("| {0, -15} | {1, -40} | {2, -21} | {3, -9} | {4, -15} |", titulos[0], titulos[1], titulos[3], titulos[4], titulos[5]);
+        Console.WriteLine("+{0}+", new string('-', 114));
+        Console.WriteLine("| {0, -15} | {1, -40} | {2, -3} | {3, -3} | {4, -3} | {5, -3} | {6, -3} | {7, -3} | {8, -3} | {9, -3} | {10, -3} |", "", "", "Q1", "Q2", "Q3", "Q4", "T1", "T2", "P1", "P2", "P3");
+        Console.WriteLine("+{0}+", new string('-', 114));
         foreach (Estudiantes list in ListEst)
         {
+            // list.ImprimirDatos()
             Console.WriteLine($"{list.ToString()}");
-            Console.WriteLine("+{0}+", new string('-', 151));
+            Console.WriteLine("+{0}+", new string('-', 114));
         }
         Console.ReadKey();
     }
@@ -196,7 +199,6 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                             while (continuar && estu.Notas.NotasTrabajos.Count() < 2)
                             {
                                 Console.Clear();
-                                Console.WriteLine(estu.Notas.NotasTrabajos.Count());
                                 Console.WriteLine("+{0}+", new string('-', 28));
                                 Console.WriteLine("|        Nota Trabajos       |");
                                 Console.WriteLine("+{0}+", new string('-', 28));
@@ -219,9 +221,9 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
                             while (continuar && estu.Notas.NotasParciales.Count() < 3)
                             {
                                 Console.Clear();
-                                Console.WriteLine("+{0}+", new string('-', 29));
+                                Console.WriteLine("+{0}+", new string('-', 24));
                                 Console.WriteLine("|     Nota Parciales     |");
-                                Console.WriteLine("+{0}+", new string('-', 29));
+                                Console.WriteLine("+{0}+", new string('-', 24));
                                 Console.WriteLine($"Parcial {estu.Notas.NotasParciales.Count() + 1}: ");
                                 estu.Notas.NotasParciales.Add(double.Parse(Console.ReadLine()));
                                 if (estu.Notas.NotasParciales.Count() < 3)
@@ -265,13 +267,13 @@ el programa debe permitirle al docente hacer el ingreso de Quices, Trabajos y Pa
     {
         string[] titulos = { "id", "nombre", "def quices", "def Trabajos", "def parciales", "Nota Final" };
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("+{0}+", new string('-', 151));
+        Console.WriteLine("+{0}+", new string('-', 117));
         Console.WriteLine("| {0, -15} | {1, -40} | {2, -7} | {3, -7} | {4, -7} | {5, -10} |", titulos[0], titulos[1], titulos[2], titulos[3], titulos[4], titulos[5]);
-        Console.WriteLine("+{0}+", new string('-', 151));
+        Console.WriteLine("+{0}+", new string('-', 117));
         foreach (Estudiantes list in ListEst)
         {
             Console.WriteLine("| {0, -15} | {1, -40} {2, -7}", list.Id, list.Nombre, list.Notas.ToString());
-            Console.WriteLine("+{0}+", new string('-', 100));
+            Console.WriteLine("+{0}+", new string('-', 117));
         }
         Console.ReadKey();
     }
